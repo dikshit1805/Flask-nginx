@@ -1,6 +1,9 @@
 {% extends 'bootstrap/base.html' %}
 {% import "bootstrap/wtf.html" as wtf %}
 
+  <head>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}">
+  </head>
 
 {% block title %}
     {% if title %}{{ title }} - {{ appname }}{% else %}{{ appname }}{% endif %}
@@ -10,8 +13,9 @@
 {% block navbar %}
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
         <div class="navbar-header">
-            <a class="navbar-brand" href="{{ url_for('index') }}">Search User ID</a>
+            <a class="navbar-brand" href="{{ url_for('index') }}">Search User</a>
             <a class="navbar-brand" href="{{ url_for('AddUser') }}">Add Users</a>
+            <a class="navbar-brand" href="{{ url_for('GetAllUsers') }}">View All Users</a>
         </div>
     </nav>
 {% endblock %}
@@ -20,7 +24,7 @@
 {% block content %}
     <div class="container">
         <div id="title_bar" class="jumbotron jumbotron">
-            <h2 id="student_name">Dummy Application</h2>
+            <h2>Flask-Nginx GUI Interface</h2>
         </div>
     </div>
 

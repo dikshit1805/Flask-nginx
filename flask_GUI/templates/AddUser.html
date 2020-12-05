@@ -1,16 +1,21 @@
 {% extends "base.html" %}
 {% block app_content %}
     {{ wtf.quick_form(form) }}
-    {% if result is defined%}
+    {% if post == 1 %}
         <div class="container mb-3">
-            <h3> User Successfully added</h3>
-            <h3> PORT : {{result['port']}}</h3>
-            <ui>
+        <h3> The Request was handled my port {{result['port']}}</h3>
+    	{% if 'ERROR' in result %}
+            <h3> Something went wrong. I was not able to add the user</h3>
+	{% else %}
+            <h3> I was able to Successfully add the user</h3>
+	    <h3> List of newly updated users </h3>
+            <ul>
                 {% for user in result['users']%}
-                    <li> {{user}} </li>
+                    <li> {{user[0]}} </li>
                 {% endfor %}
-            </ui>
+            </ul>
             <br>
+    	{% endif %}
         </div>
     {% endif %}
 {% endblock %}

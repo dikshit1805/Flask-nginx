@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+{% block app_content %}
+        <div class="container mb-3">
+        <h3> This request was handled by : {{result['port']}}</h3>
+    	{% if 'ERROR' in result %}
+            <h3> Something went wrong. I was not able to get all the user</h3>
+	{% else %}
+	    <h3> List of Users </h3>
+            <ul>
+                {% for user in result['users'] %}
+                    <li> {{user[0]}} </li>
+                {% endfor %}
+            </ul>
+            <br>
+    	{% endif %}
+        </div>
+{% endblock %}

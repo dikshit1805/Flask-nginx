@@ -6,6 +6,22 @@ About:
   uwsgi would spawn 4 processes, 2 thread of flask application on each of the above port. Therefore in total 4 Process * 3 Ports = 12 instances of the flask application.
   Nginx is configured to Round Robin the incomming traffic amoung the 3 ports. 
 
+API's and Functionality:
+  /flask_GUI  :  I have created a simple user interface with you could use to test the functionality of the application. Allows you to add an user, search for a user and View all the users.
+	1. /           : Renders SearchUser page.
+	2. /AddUser    : Renders AddUser page.
+	3. /GetAllUser : Renders GetAllUser page.
+
+  /flask_db   :  Container for hosting the DB and serves as a DB manager.
+	1. /db/execute        POST   {"query" : <SQL QUERY> }               : Return the query output
+
+  /flast_rest :  3 Rest Api 
+	1. /rest/searchUser   GET    name=<user id>                         : Returns the user_key of the user ID.
+	2. /rest/addUser      POST   {"userID":<user id>, "key":<user_key>} : adds the user to the DB.
+	3. /rest/getAllUsers  GET                                           : gets all the users in the DB.
+
+  /nginx : Consists the mapping of routes to each of the other containers.
+
 Instruction to run:
   Environment Setup:
     1. install Docker https://docs.docker.com/engine/install/
@@ -16,3 +32,4 @@ Instruction to run:
       Make sure you cd to the folder which containes the docker-compose.yml files (Eg in this application it is the root folder of the project).
       if Docker-cli was successfully installed then running the following command will start the application.
         docker-compose up --build 
+

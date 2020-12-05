@@ -3,34 +3,47 @@ version: "3.7"
 services:
 
   flask1:
-    build: ./flask
+    build: ./flask_rest
     container_name: flask1
     restart: always
     environment:
       - PORT=8080
-      - DATABASE=users.db
     expose:
       - 8080
 
   flask2:
-    build: ./flask
+    build: ./flask_rest
     container_name: flask2
     restart: always
     environment:
       - PORT=8081
-      - DATABASE=users.db
     expose:
       - 8081
 
   flask3:
-    build: ./flask
+    build: ./flask_rest
     container_name: flask3
     restart: always
     environment:
       - PORT=8082
-      - DATABASE=users.db
     expose:
       - 8082
+
+  flask_db:
+    build: ./flask_db
+    container_name: flask_db
+    restart: always
+    environment:
+      - DATABASE=users.db
+    expose:
+      - 6000
+
+  flask_gui:
+    build: ./flask_GUI
+    container_name: flask_gui
+    restart: always
+    expose:
+      - 5000
 
   nginx:
     build: ./nginx

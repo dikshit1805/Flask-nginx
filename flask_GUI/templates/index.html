@@ -1,10 +1,18 @@
 {% extends "base.html" %}
 {% block app_content %}
     {{ wtf.quick_form(form) }}
-    {% if result is defined%}
+    {% if post == 1 %}
         <div class="container mb-3">
-            <h3> The secret key of the User is {{result}}</h3>
+	{% if 'ERROR' in result %}
+	    <h3> Request served by port {{result['port']}}</h3>	
+            <h3> Sorry {{result['ERROR']}}</h3>
+            <h3> Try going to the getAllUser page in the Navbar to see a list of all available users</h3>
             <br>
+	{% else %}
+	    <h3> Request served by port {{result['port']}}</h3>	
+            <h3> The secret key of the User is {{result['user_key']}}</h3>
+            <br>
+   	 {% endif %}
         </div>
     {% endif %}
 {% endblock %}
