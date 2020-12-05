@@ -6,7 +6,7 @@ uwsgi would spawn 4 processes, 2 thread of flask application on each of the abov
 
 # Design
 
-![enter image description here](https://i.ibb.co/QnKjJDH/Pipeline.png)
+![enter image description here](https://i.ibb.co/BjSmx04/Pipeline.png)
 
 # API's and Functionality
 
