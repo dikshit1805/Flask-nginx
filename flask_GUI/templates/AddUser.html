@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+{% block app_content %}
+    {{ wtf.quick_form(form) }}
+    {% if result is defined%}
+        <div class="container mb-3">
+            <h3> User Successfully added</h3>
+            <h3> PORT : {{result['port']}}</h3>
+            <ui>
+                {% for user in result['users']%}
+                    <li> {{user}} </li>
+                {% endfor %}
+            </ui>
+            <br>
+        </div>
+    {% endif %}
+{% endblock %}

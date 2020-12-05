@@ -1,0 +1,38 @@
+{% extends 'bootstrap/base.html' %}
+{% import "bootstrap/wtf.html" as wtf %}
+
+
+{% block title %}
+    {% if title %}{{ title }} - {{ appname }}{% else %}{{ appname }}{% endif %}
+{% endblock %}
+
+
+{% block navbar %}
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <div class="navbar-header">
+            <a class="navbar-brand" href="{{ url_for('index') }}">Search User ID</a>
+            <a class="navbar-brand" href="{{ url_for('AddUser') }}">Add Users</a>
+        </div>
+    </nav>
+{% endblock %}
+
+
+{% block content %}
+    <div class="container">
+        <div id="title_bar" class="jumbotron jumbotron">
+            <h2 id="student_name">Dummy Application</h2>
+        </div>
+    </div>
+
+    <div class="container">
+        {% with messages = get_flashed_messages() %}
+            {% if messages %}
+                {% for message in messages %}
+                    <div class="alert alert-info" role="alert">{{ message }}</div>
+                {% endfor %}
+            {% endif %}
+        {% endwith %}
+        {% block app_content %}
+        {% endblock %}
+    </div>
+{% endblock %}
